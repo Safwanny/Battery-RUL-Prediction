@@ -4,7 +4,7 @@ Forecast **battery voltage** from time-series sensor data (a stepping stone towa
 
 ---
 
-## ✅ What’s been done & goal achieved
+## What’s been done & goal achieved
 - **Goal:** Predict near-term **Voltage_measured** from multi-sensor time series; establish a solid base for future **RUL** modeling.
 - **Built:**
   - Loader that ingests multiple CSVs, tags each as a unique **Battery_ID**, and sorts by **Time**.
@@ -15,7 +15,7 @@ Forecast **battery voltage** from time-series sensor data (a stepping stone towa
 
 ---
 
-## 🧠 How it works (brief)
+## How it works (brief)
 1. **Load & prepare** → `battery_voltage/io.py`, `features.py`  
    Required CSV columns:  
    `Voltage_measured, Current_measured, Temperature_measured, Current_load, Voltage_load, Time`
@@ -30,7 +30,7 @@ Forecast **battery voltage** from time-series sensor data (a stepping stone towa
 
 ---
 
-## 📁 Folder layout
+## Folder layout
 ```text
 Battery-RUL-Prediction/
 ├─ battery_voltage/              # pipeline modules
@@ -49,7 +49,11 @@ Battery-RUL-Prediction/
 │  └─ predict_lstm.py            # batch inference CLI for a new CSV folder
 ├─ requirements.txt
 └─ artifacts/                    # (created at runtime) model, scalers, metrics, plots
-🚀 How to use & run
+
+---
+
+## How to use & run
+
 1) Set up environment
 cd /ABSOLUTE/PATH/TO/Battery-RUL-Prediction
 python -m venv .venv
