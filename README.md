@@ -49,7 +49,7 @@ Battery-RUL-Prediction/
 │  └─ predict_lstm.py            # batch inference CLI for a new CSV folder
 ├─ requirements.txt
 └─ artifacts/                    # (created at runtime) model, scalers, metrics, plots
-
+```
 ---
 
 ## How to use & run
@@ -57,32 +57,45 @@ Battery-RUL-Prediction/
 1) Set up environment
 cd /ABSOLUTE/PATH/TO/Battery-RUL-Prediction
 python -m venv .venv
-# macOS/Linux:
+macOS/Linux:
+```bash
 source .venv/bin/activate
-# Windows PowerShell:
-# .\.venv\Scripts\Activate.ps1
-
+```
+Windows PowerShell:
+```bash
+.\.venv\Scripts\Activate.ps1
+```
+```bash
 pip install --upgrade pip
 pip install -r requirements.txt
+```
+
 2) Configure paths & options
 Edit configs/default.yaml:
+```yaml
 data_dir: "/ABSOLUTE/PATH/TO/YOUR/CSV/FOLDER"
 artifacts_dir: "artifacts"
-
 sequence_length: 30
 epochs: 10          # small for a quick run; increase later
 batch_size: 128
 split_mode: "group" # or "time"
+```
+
 3) Train (from project root)
+
 python -m scripts.train_lstm
 Outputs → artifacts/
 lstm_voltage.keras (model), scaler_X.joblib, scaler_y.joblib
 metrics.json (RMSE/MAE/R²), actual_vs_pred.png, training_curve.png
+
 Stop training: press Ctrl+C (terminal) or click Stop (PyCharm).
 By default, artifacts are saved at the end of training.
+
 4) Inference on a new folder of CSVs
 python -m scripts.predict_lstm /ABSOLUTE/PATH/TO/NEW/CSV_FOLDER
 Outputs → artifacts/inference/: predictions.csv, actual_vs_pred.png
-🔎 Notes
+
+
+## Notes
 CSVs must include: Voltage_measured, Current_measured, Temperature_measured, Current_load, Voltage_load, Time.
 The pipeline is leakage-safe: clipping/scaling are fit only on train, test is untouched until final evaluation.
