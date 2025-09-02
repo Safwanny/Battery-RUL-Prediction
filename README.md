@@ -102,3 +102,4 @@ Outputs → artifacts/inference/: predictions.csv, actual_vs_pred.png
 ## Notes
 CSVs must include: Voltage_measured, Current_measured, Temperature_measured, Current_load, Voltage_load, Time.
 The pipeline is leakage-safe: clipping/scaling are fit only on train, test is untouched until final evaluation.
+dataset is NASA battery dataset from kaggle
