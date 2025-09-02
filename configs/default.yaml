@@ -1,0 +1,55 @@
+# Paths
+data_dir: "/Users/safwanshaikh/Downloads/AML/Battery-RUL-Prediction/cleaned_dataset/data"  # <- change this
+artifacts_dir: "/Users/safwanshaikh/Downloads/AML/Battery-RUL-Prediction/artifacts"
+
+# Columns expected in raw CSVs
+required_features:
+  - Voltage_measured
+  - Current_measured
+  - Temperature_measured
+  - Current_load
+  - Voltage_load
+  - Time
+
+# Columns to use as model inputs (keep temp & current_load — they're useful)
+feature_cols:
+  - Current_measured
+  - Voltage_load
+  - Current_load
+  - Temperature_measured
+  - Time
+
+target_col: "Voltage_measured"
+
+# Sequence settings
+sequence_length: 30
+
+# Split settings
+test_ratio: 0.2
+random_state: 42
+split_mode: "group"  # "group" (by Battery_ID) or "time"
+
+# Clipping (fit on train only, then apply to test)
+clip:
+  enabled: true
+  lower_q: 0.05
+  upper_q: 0.95
+  columns:
+    - Voltage_measured
+    - Current_measured
+    - Current_load
+    - Voltage_load
+
+# Training
+batch_size: 64
+epochs: 10
+patience: 8
+learning_rate: 0.001
+validation_split: 0.2
+
+# Model sizes
+model:
+  lstm1: 64
+  dropout: 0.2
+  lstm2: 32
+  dense: 16

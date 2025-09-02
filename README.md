@@ -92,7 +92,10 @@ Stop training: press Ctrl+C (terminal) or click Stop (PyCharm).
 By default, artifacts are saved at the end of training.
 
 4) Inference on a new folder of CSVs
-python -m scripts.predict_lstm /ABSOLUTE/PATH/TO/NEW/CSV_FOLDER
+```python
+python -m scripts.predict_lstm
+``` 
+change to location of dataset in default.yaml`/ABSOLUTE/PATH/TO/NEW/CSV_FOLDER`
 Outputs → artifacts/inference/: predictions.csv, actual_vs_pred.png
 
 
