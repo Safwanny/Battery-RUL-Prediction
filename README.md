@@ -82,8 +82,10 @@ split_mode: "group" # or "time"
 ```
 
 3) Train (from project root)
-
+```bash
 python -m scripts.train_lstm
+```
+
 Outputs → artifacts/
 lstm_voltage.keras (model), scaler_X.joblib, scaler_y.joblib
 metrics.json (RMSE/MAE/R²), actual_vs_pred.png, training_curve.png
@@ -91,10 +93,6 @@ metrics.json (RMSE/MAE/R²), actual_vs_pred.png, training_curve.png
 Stop training: press Ctrl+C (terminal) or click Stop (PyCharm).
 By default, artifacts are saved at the end of training.
 
-4) Inference on a new folder of CSVs
-```python
-python -m scripts.predict_lstm
-``` 
 change to location of dataset in default.yaml`/ABSOLUTE/PATH/TO/NEW/CSV_FOLDER`
 Outputs → artifacts/inference/: predictions.csv, actual_vs_pred.png
 
